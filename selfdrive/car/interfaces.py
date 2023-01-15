@@ -136,7 +136,7 @@ class CarInterfaceBase(ABC):
     # standard ALC params
     ret.steerControlType = car.CarParams.SteerControlType.torque
     ret.minSteerSpeed = 0.
-    ret.wheelSpeedFactor = 1.0
+    ret.wheelSpeedFactor = 1.09
 
     ret.pcmCruise = True     # openpilot's state is tied to the PCM's cruise state on most cars
     ret.minEnableSpeed = -1. # enable is done by stock ACC, so ignore this
@@ -418,7 +418,7 @@ class CarStateBase(ABC):
         'D': GearShifter.drive, 'DRIVE': GearShifter.drive,
         'S': GearShifter.sport, 'SPORT': GearShifter.sport,
         'L': GearShifter.low, 'LOW': GearShifter.low,
-        'B': GearShifter.brake, 'BRAKE': GearShifter.brake,
+        'B': GearShifter.brake, 'BRAKE': GearShifter.drive,
     }
     return d.get(gear.upper(), GearShifter.unknown)
 
